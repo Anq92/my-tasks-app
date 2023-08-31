@@ -1,0 +1,31 @@
+{
+  "name": "my-tasks-app",
+  "version": "1.0.0",
+  "description": "Tasks management app",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node": "^17.0.41",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "sass": "^1.51.0",
+    "typescript": "^4.7.3"
+  },
+  "scripts": {
+    "build": "sass src/styles/style.sass src/output/style.css && npx tsc && browserify src/output/main.js > src/output/bundle.js",
+    "start": "http-server ./src",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anq92/my-tasks-app"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^17.0.0"
+  }
+}

@@ -1,0 +1,415 @@
+@use 'colors'
+
+body
+    margin: 0
+    background-color: colors.$background
+
+main
+    font-family: 'Overpass'
+    height: 95vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+h1, h2
+    color: colors.$large_font
+
+#alert-box-container
+    position: absolute
+    display: flex
+    justify-content: space-around
+    align-items: center
+    height: 100%
+    width: 100%
+    background-color: colors.$alert_background
+    backdrop-filter: blur(3px)
+    z-index: 100
+
+#alert-box
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+    color: white
+    width: clamp(12rem, 50vw, 20rem)
+    min-height: clamp(7rem, 30vw, 12rem)
+    background-color: colors.$container_background
+    border-radius: 0.8rem
+    padding: 1.5rem
+
+#alert-box-buttons
+    width: 100%
+    display: flex
+    justify-content: space-around
+    button
+        width: clamp(3.5rem, 15vw, 5rem)
+        height: clamp(2.3rem, 10vw, 3.5rem)
+        border-style: none
+        border-radius: 0.3rem
+        cursor: pointer
+
+#alert-confirm
+    background-color: hsl(90, 20.9%, 56.9%)
+
+#alert-reject
+    background-color: hsl(5.6, 66.1%, 65.3%)
+
+#alert-message-container
+    font-size: clamp(1rem, 3.2vw, 1.3rem)
+
+.name-alert-message
+    font-style: italic
+
+.alert-button-text
+    color: white
+    font-family: 'Overpass'
+    font-size: clamp(1rem, 3.4vw, 1.5rem)
+
+#on-loading-element
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    width: clamp(12rem, 75vw, 34rem)
+    height: 85vh
+
+#on-loading-text-container
+    color: white
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: clamp(0.8rem, 3vw, 1.1rem)
+    min-height: clamp(4rem, 8vw, 6rem)
+    min-width: clamp(8rem, 16vw, 12rem)
+    background-color: colors.$loading_text_container_background
+    border-radius: 0.5rem
+
+#main-body-component
+    width: 100%
+    height: 95%
+    display: flex
+
+#password-message, #email-message
+    color: red
+
+.tabs
+    display: flex
+    justify-content: space-around
+
+%description
+    width: 100%
+    box-sizing: border-box
+    padding: 0
+    border: 0
+    padding: 0.5rem
+    border-radius: 0.6rem
+    resize: none
+    font-size: clamp(0.6rem, 3.2vw, 0.9rem)
+
+%description:disabled
+    background-color: #e2e3e5
+
+#deadline
+    display: flex
+    flex-direction: column
+    border: 0.1rem solid colors.$lines
+    border-radius: 0.5rem
+    align-items: center
+
+#note-description
+    @extend %description
+    height: 50vh
+
+.page-header
+    font-size: clamp(1.5rem, 5vw, 2rem)
+    margin-top: 0.6rem
+    margin-bottom: 0.6rem
+
+#task-description
+    @extend %description
+    height: 10vh
+
+.name-area-container
+    font-family: 'Overpass'
+    font-size: clamp(1.4rem, 3.6vw, 1.8rem)
+    font-weight: 700
+    margin: 0.5rem 0
+    cursor: pointer
+
+.name-area-container.disable
+    cursor: default
+
+#name-input
+    font-family: 'Overpass'
+    font-size: clamp(1.4rem, 3.6vw, 1.8rem)
+    font-weight: 700
+    resize: none
+    width: 100%
+    vertical-align: baseline
+    background: none
+    border: none
+    color: white
+    padding: 0
+    margin: 0
+
+#note-name
+    margin: 0.6rem 0 0.6rem 0
+
+.tasks-label
+    font-family: 'Overpass'
+    font-size: clamp(1rem, 2.4vw, 1.3rem)
+    font-weight: 700
+
+#completed
+    -webkit-appearance: none
+    width: clamp(1.1rem, 2.6vw, 1.35rem)
+    height: clamp(1.1rem, 2.6vw, 1.35rem)
+    background-color: colors.$container_background
+    border: 0.13rem solid white
+    border-radius: 0.2rem
+    display: inline-block
+    margin: 0 0.5rem 0 0
+    align-self: center
+    cursor: pointer
+
+#completed:checked
+    background-color: white
+    background-image: url("../src/images/checkmark.svg")
+    width: clamp(1.1rem, 2.6vw, 1.35rem)
+    height: clamp(1.1rem, 2.6vw, 1.35rem)
+    display: inline-block
+
+.checkbox-container
+    height: clamp(1.1rem, 2.6vw, 1.35rem)
+    display: flex
+    justify-content: left
+
+#label-completed
+    font-size: clamp(1.1rem, 2.6vw, 1.35rem)
+
+#task-info
+    width: 100%
+
+    > div
+        padding: clamp(0.5rem, 1.2vw, 0.7rem) 0 clamp(0.5rem, 1.2vw, 0.7rem) 0
+
+    .checkbox-container
+        padding-left: 0.2rem
+
+#nav-buttons
+    display: flex
+    justify-content: space-between
+    flex-direction: row-reverse
+
+#button-return
+    height: 2rem
+    width: 2rem
+
+#notes-list, #tasks-list
+    font-size: clamp(0.9rem, 3vw, 1.2rem)
+    font-weight: 200
+    overflow-y: auto
+
+    li
+        font-weight: 200
+        font-size: clamp(0.8rem, 3vw, 1.1rem)
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin: 0.5rem 0 0.5rem 0
+        min-height: clamp(4rem, 15vw, 5.5rem)
+        padding: 0 clamp(0.4rem, 1.2vw, 0.6rem) 0 0
+        border: solid 0.1rem
+        border-color: colors.$lines
+        border-radius: 0.5rem
+
+.notes-header
+    font-size: clamp(1.1rem, 3vw, 1.5rem)
+    margin-top: 0.3rem
+    margin-bottom: 0.3rem
+
+#tab-content
+    overflow-y: auto
+
+.tab
+    font-size: clamp(1rem, 3.2vw, 1.3rem)
+    margin-top: 0.5rem
+    margin-bottom: 0.5rem
+    font-weight: 500
+    cursor: pointer
+    color: colors.$tab_inactive
+
+.tab.bold
+    color: colors.$tab_active
+    font-weight: 700
+
+input
+    font-family: 'Overpass'
+
+input[type="time"], input[type="date"]
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem)
+    border: 0.1rem solid colors.$lines
+    color: white
+    background: none
+
+input[type="time"]::-webkit-clear-button
+    display: none
+
+#task-details, #tasks, #note-details
+    display: flex
+    flex-direction: column
+    width: 100%
+    height: 100%
+    color: white
+
+    hr
+        width: 100%
+        border-style: none
+        border-top: 0.1rem solid colors.$lines
+
+#create-account
+    color: blue
+    text-decoration: underline
+    cursor: pointer
+
+#create-account:hover
+    text-decoration: none
+
+#user-data
+    display: flex
+    flex-direction: column
+    width: 100%
+    align-items: center
+    justify-content: center
+
+#email, #password
+    width: clamp(6rem, 70vw, 25rem)
+    height: clamp(2rem, 8vw, 2.5rem)
+    font-size: clamp(0.9rem, 4vw, 1.2rem)
+    border: 0
+    border-radius: 0.4rem
+    margin: 0.5rem
+
+#email-message, #password-message
+    font-size: clamp(0.7rem, 3.5vw, 1rem)
+
+#sign-out
+    align-self: flex-start
+    width: 2rem
+    height: 2rem
+
+#nav-right-container
+    display: flex
+    felx-wrap: nowrap
+
+#username-container
+    font-size: clamp(0.7rem, 2.8vw, 1rem)
+    margin: 0.3rem
+    padding: 0.2rem
+    border: solid 0.15rem colors.$lines
+    border-radius: 0.5rem
+
+#sign-in
+    justify-content: flex-start
+
+.content
+    display: flex
+    width: 100%
+    flex-direction: column
+    height: 100%
+    justify-content: flex-start
+    align-items: center
+
+    > div
+        width: 100%
+
+.list
+    list-style-type: none
+    list-style-position: inside
+    color: white
+    margin-top: 0
+    padding: 0
+
+.li-container-left
+    display: flex
+    align-items: center
+
+.list-element
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: clamp(4rem, 15vw, 5.5rem)
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.4rem, 1.2vw, 0.6rem)
+    cursor: pointer
+    border-radius: 0.5rem
+    background-color: colors.$list_name_element
+    width: 40%
+
+.list-element-category, .date-category
+    font-weight: 700
+
+.list-element-name
+    text-align: center
+
+.list-element:hover
+    background-color: colors.$list_name_element_hover
+
+.date-item
+    text-align: center
+
+#new-list-element-button
+    width: 2.5rem
+    height: 2.5rem
+    margin: 1rem 0 0 0
+    cursor: pointer
+
+.remove
+    cursor: pointer
+    width: clamp(1.5rem, 4.2vw, 2.2rem)
+    height: clamp(1.5rem, 4.2vw, 2.2rem)
+
+.container
+    color: white
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    background-color: colors.$container_background
+    width: clamp(12rem, 85vw, 34rem)
+    height: 85vh
+    border-radius: 30px
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem)
+
+.attribution
+    font-size: 11px
+    text-align: center
+    a
+        color: hsl(228, 45%, 44%)
+
+#submit
+    background-color: colors.$submit_button
+    border: none
+    width: clamp(6rem, 19vw, 7rem)
+    height: clamp(3rem, 9.5vw, 3.5rem)
+    border-radius: 0.5rem
+    cursor: pointer
+    transition: 0.2s
+    margin: 1rem
+
+#submit:hover, #submit:active
+    background-color: colors.$button_hover
+
+.button-text
+    font-family: 'Overpass'
+    font-weight: 700
+    font-size: clamp(1rem, 3.5vw, 1.2rem)
+    color: colors.$submit_button_text
+
+.message
+    text-align: center
+    margin: 0%
+    padding: 0% 10% 10% 10%
+
+footer
+    color: colors.$footer
