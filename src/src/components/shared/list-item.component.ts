@@ -1,4 +1,4 @@
-import { htmlToChildNode, htmlToDocumentFragment } from "../../helpers/dom-helpers";
+import { htmlToChildNode } from "../../helpers/dom-helpers";
 import NamedData, { IComponent } from "../../models/models";
 
 export class CustomListItemComponent implements IComponent {
@@ -40,7 +40,7 @@ export class CustomListItemComponent implements IComponent {
         if(this.isTaskCompleted !== true) {
             const deleteButton = document.createElement("img");
             deleteButton.className = "remove";
-            deleteButton.src = "src/images/icons8-remove-50.png"
+            deleteButton.src = "public/icons8-remove-50.png"
             deleteButton.addEventListener("click", this.removeDataActionFactory(this.data.id!)); 
             content.append(deleteButton);
         } else {

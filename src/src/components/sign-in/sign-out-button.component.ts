@@ -5,7 +5,7 @@ export function createSignOutButtonHtmlElement(buttonId: string | null, onSignOu
     const signOutButton = document.createElement("input");
     signOutButton.id = buttonId ?? "sign-out";
     signOutButton.type = "image";
-    signOutButton.src = "src/images/icons8-power-button-64.png"
+    signOutButton.src = "public/icons8-power-button-64.png"
     signOutButton.addEventListener(
         "click", 
         async () => {
