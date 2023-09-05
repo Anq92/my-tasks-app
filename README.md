@@ -22,10 +22,10 @@ You can run this application locally(use [instructions](#installation)) or test 
 
 ## Screenshots
 
-![screenshot of the app's login page](./public/screenshot1.png)
-![screenshot of the app's main page](./public/screenshot2.png)
-![screenshot of task details page](./public/screenshot3.png)
-![screenshot of note details page](./public/screenshot4.png)
+![screenshot of the app's login page](./src/public/screenshot1.png)
+![screenshot of the app's main page](./src/public/screenshot2.png)
+![screenshot of task details page](./src/public/screenshot3.png)
+![screenshot of note details page](./src/public/screenshot4.png)
 
 ## Installation
 
