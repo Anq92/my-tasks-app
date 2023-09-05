@@ -21,9 +21,8 @@ const localData : {
 
 async function backButtonOnClickEvent() {
 
-        if(localData.onReturn !== undefined) {
-            localData.onReturn!(); 
-        };
+ localData.onReturn && localData.onReturn(); 
+
 }
 
 const navigation : INavigation = {
@@ -105,7 +104,9 @@ export function createMainBody(innerHtml: string, onSignOut: (id: string) => Pro
 
     const displayTaskDetailsAsync = async (taskData: TaskData, refresh: boolean) => {
         localData.taskId = taskData.id;
-        localData.onReturn = () => { displayTaskListAsync(false, localData.tabId!); };
+        if (localData.tabId) {
+            localData.onReturn = () => { displayTaskListAsync(false, localData.tabId as string); };
+        }
         const taskDetails = new TaskDetailsComponent(navigation, taskData, localData.tasks);
 
         if(refresh === true){
@@ -114,10 +115,10 @@ export function createMainBody(innerHtml: string, onSignOut: (id: string) => Pro
             if(fetchResult) {
                 localData.notes = fetchResult;
             } else {
-                localData.onReturn();
+                localData.onReturn && localData.onReturn();
             }    
 
-            let idx = localData.tasks.findIndex(t => t.id === localData.taskId);
+            const idx = localData.tasks.findIndex(t => t.id === localData.taskId);
             localData.tasks[idx] = taskData;
         } else {
             taskDetails.setData(localData.notes);
@@ -134,20 +135,25 @@ export function createMainBody(innerHtml: string, onSignOut: (id: string) => Pro
     }
 
     const displayNoteDetailsAsync = (noteData: NoteData) => {
-        localData.noteId = noteData.id;
-        const taskIdx = localData.tasks.findIndex(t => t.id === localData.taskId);
-        const taskData = localData.tasks[taskIdx];
-        const noteIdx = localData.notes.findIndex(n => n.id === localData.noteId);
-        localData.notes[noteIdx] = noteData;
-        localData.onReturn = () => { displayTaskDetailsAsync(taskData, false); };
-        const noteDetails = new NoteDetailsComponent(navigation, noteData, localData.notes, localData.taskId!, taskData.isCompleted);
-        const nodeToAdd = noteDetails.render();
-        if(nodeToAdd!= null){
-            setInnerNode(nodeToAdd);
+
+        if(localData.taskId) {
+            localData.noteId = noteData.id;
+            const taskIdx = localData.tasks.findIndex(t => t.id === localData.taskId);
+            const taskData = localData.tasks[taskIdx];
+            const noteDetails = new NoteDetailsComponent(navigation, noteData, localData.notes, localData.taskId, taskData.isCompleted);
+            const noteIdx = localData.notes.findIndex(n => n.id === localData.noteId);
+            localData.notes[noteIdx] = noteData;
+            localData.onReturn = () => { displayTaskDetailsAsync(taskData, false); };
+    
+            const nodeToAdd = noteDetails.render();
+            if(nodeToAdd!= null){
+                setInnerNode(nodeToAdd);
+            }
+            else{
+                setInnerHtml("failed to show Note Details");
+            }
         }
-        else{
-            setInnerHtml("failed to show Note Details");
-        }
+
     }
 
     navigation.displayTaskListAsync = displayTaskListAsync;
