@@ -9,7 +9,7 @@
 
 # Introduction
 
-This repo contains a code for task management application UI created in educational purposes.  
+This repo contains a code for task management application UI created for educational purposes.  
 The main goal of this project was to learn Typescript and working with API.  
 It wasn't copied from any tutorial :smirk:.
 
@@ -29,10 +29,13 @@ You can run this application locally(use [instructions](#installation)) or test 
 
 ## Installation
 
-$ npm install  
-$ npm install --global http-server  
-$ npm run build  
-$ npm run start
+```
+cd my-tasks-app
+npm install
+npm install --global http-server
+npm run build
+npm run start
+```
 
 # Built with
 
